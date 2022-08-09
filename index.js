@@ -1,6 +1,9 @@
+const { v4: uuidv4 } = require('uuid');
 const express = require('express')
 const app = express()
 const port = 8000
+
+console.log(`user id : ${uuidv4()}`)
 
 // app.use(express.json()) harus di declare agar res.json() dapat digunakan
 app.use(express.json())
@@ -20,6 +23,7 @@ app.get('/employee/:id', (req, res) => {
 app.post('/employee', (req, res) => {
     const employee = req.body
     res.json({
+        uuid : uuidv4(),
         employee
     })
 })
