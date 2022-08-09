@@ -5,11 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "TZ='UTC+7' node index.js"
+    "start": "TZ='UTC+7' node index.js",
+    "start:dev": "nodemon index.js"
   },
   "author": "afauzi",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
   }
 }
