@@ -1,5 +1,5 @@
 const employeeService = (employeeRepository) => {
-    const {create, list, getById} = employeeRepository()
+    const {create, list, getById} = employeeRepository
 
     const registerEmployee = (newEmployee) => {
         return create(newEmployee)
