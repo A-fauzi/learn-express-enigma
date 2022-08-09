@@ -14,3 +14,5 @@ const employeeService = (employeeRepository) => {
     return { registerEmployee, findAllEmployee, findAllEmployeeById }
 
 }
+
+module.exports = employeeService
