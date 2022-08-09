@@ -1,0 +1,15 @@
+{
+  "name": "enigma-express",
+  "version": "1.0.0",
+  "description": "Belajar Express Framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "TZ='UTC+7' node index.js"
+  },
+  "author": "afauzi",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
