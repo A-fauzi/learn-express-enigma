@@ -1,4 +1,5 @@
-module.exports = Response = () => {
+const Response = () => {
+
     const successMessage = (code, message, data) => ({
         code : code,
         message : message,
@@ -13,3 +14,4 @@ module.exports = Response = () => {
     }
 }
 
+module.exports = Response
