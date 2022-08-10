@@ -1,5 +1,5 @@
 const employeeService = (employeeRepository) => {
-    const {create, list, getById} = employeeRepository
+    const {create, list, getById, update, deleteEmployee} = employeeRepository
 
     const registerEmployee = (newEmployee) => {
         return create(newEmployee)
@@ -10,8 +10,14 @@ const employeeService = (employeeRepository) => {
     const findAllEmployeeById = (id) => {
         getById(id)
     }
+    const updateEmployee = (id, itemsObj) => {
+        update(id, itemsObj)
+    }
+    const removeEmployee = (id) => {
+        deleteEmployee(id)
+    }
 
-    return { registerEmployee, findAllEmployee, findAllEmployeeById }
+    return { registerEmployee, findAllEmployee, findAllEmployeeById, updateEmployee, removeEmployee }
 
 }
 

@@ -21,11 +21,24 @@ const employeeController = () => {
     const employee = employeeServicee.findAllEmployeeById(id)
     res.json(Response().successMessage(res.statusCode, 'SUCCESS', employee))
   }
+  const updateEmployee = (req, res) => {
+    const id = req.params.id
+    const upPayload = req.body
+    const employee = employeeServicee.updateEmployee(id, upPayload)
+    res.json(Response().successMessage(res.statusCode, 'SUCCESS', employee))
+  }
+  const deleteEmployee = (req, res) => {
+    const id = req.params.id
+    const employee = employeeServicee.removeEmployee(id)
+    res.json(Response().successMessage(res.statusCode, 'SUCCESS', employee))
+  }
 
   return {
     createEmployee,
     listEmployee,
-    getEmployee
+    getEmployee,
+    updateEmployee,
+    deleteEmployee
   }
   
 }
