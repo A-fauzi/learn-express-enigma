@@ -53,6 +53,7 @@ const employeeRepository = (db) => {
                     payload.pob,
                     payload.address,
                     payload.marital_status,
+                    payload.id
                 ]
             )
             return EmployeeDto(result)
@@ -60,8 +61,13 @@ const employeeRepository = (db) => {
             console.log(e.message)
         }
     }
-    const deleteEmployee = (id) => {
-
+    const deleteEmployee = async (id) => {
+        try {
+            const result = await db.query(DbQuery().DELETE_BIODATA, [id])
+            return result.rows[0]
+        } catch (e){
+            console.log(e.message)
+        }
     }
 
     return {

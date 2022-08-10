@@ -8,7 +8,7 @@ const DbQuery = () => {
                                 pob        = $4,
                                 address    = $5
                                 marital_status    = $6
-                            where id = $7`;
+                            where id = $7 RETURNING *`;
     const DELETE_BIODATA = `DELETE
                             FROM master.biodata
                             where id = $1`;

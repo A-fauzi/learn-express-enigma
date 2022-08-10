@@ -31,7 +31,11 @@ const employeeService = (employeeRepository) => {
         }
     }
     const removeEmployee = (id) => {
-        deleteEmployee(id)
+        try {
+            return deleteEmployee(id)
+        }catch (e) {
+            return e.message
+        }
     }
 
     return { registerEmployee, findAllEmployee, findAllEmployeeById, updateEmployee, removeEmployee }
