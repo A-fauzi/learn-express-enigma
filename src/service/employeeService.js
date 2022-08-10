@@ -1,17 +1,34 @@
 const employeeService = (employeeRepository) => {
+
     const {create, list, getById, update, deleteEmployee} = employeeRepository
 
-    const registerEmployee = (newEmployee) => {
-        return create(newEmployee)
+    const registerEmployee = async (newEmployee) => {
+        try {
+            return await create(newEmployee);
+        }catch (e) {
+            console.log(e.message)
+        }
     }
-    const findAllEmployee = () => {
-        return list()
+    const findAllEmployee = async () => {
+        try {
+            return await list()
+        }catch (e) {
+            console.log(e.message)
+        }
     }
-    const findAllEmployeeById = (id) => {
-        return getById(id)
+    const findAllEmployeeById = async (id) => {
+        try {
+            return await getById(id)
+        }catch (e) {
+            console.log(e.message)
+        }
     }
-    const updateEmployee = (id, payload) => {
-        update(id, payload)
+    const updateEmployee = async (id, payload) => {
+        try {
+            return await update(id, payload)
+        }catch (e) {
+            console.log(e.message)
+        }
     }
     const removeEmployee = (id) => {
         deleteEmployee(id)

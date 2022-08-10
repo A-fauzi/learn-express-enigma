@@ -1,10 +1,11 @@
-module.exports = Employee = (id, firstname, lastname, dob, pob, address) => {
-    return {
+module.exports = Employee = (id, firstname, lastname, dob, pob, address, marital_status) => {
+    return  {
         id,
         firstname,
         lastname,
         dob,
         pob,
-        address
+        address,
+        marital_status
     }
 }

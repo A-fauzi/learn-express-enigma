@@ -1,24 +1,30 @@
 const employeeService = require('../../service/employeeService')
 const employeeRepository = require('../../repository/employeeRepository')
 const Response = require('../../utils/response')
+const db = require("../../config/db");
 
 const employeeController = () => {
-  const employeeServicee = employeeService(employeeRepository())
 
-  const createEmployee = (req, res) => {
-    const payload = req.body
-    const newEmployee = employeeServicee.registerEmployee(payload)
-    res.json(Response().successMessage(res.statusCode, 'SUCCESS', newEmployee))
+  const employeeServicee = employeeService(employeeRepository(db))
+  const createEmployee = async (req, res) => {
+    try {
+      const payload = req.body
+      const newEmployee = await employeeServicee.registerEmployee(payload)
+      res.json(Response().successMessage(res.statusCode, 'SUCCESS', newEmployee))
+    }catch (e) {
+      console.log(e.message)
+      res.json(Response().errorMessage('XX', e.message))
+    }
   }
   
-  const listEmployee = (req, res) => {
-    const employee = employeeServicee.findAllEmployee()
+  const listEmployee = async (req, res) => {
+    const employee = await employeeServicee.findAllEmployee()
     res.json(Response().successMessage(res.statusCode, 'SUCCESS', employee))
   }
 
-  const getEmployee = (req, res) => {
+  const getEmployee = async (req, res) => {
     const id = req.params.id
-    const employee = employeeServicee.findAllEmployeeById(id)
+    const employee = await employeeServicee.findAllEmployeeById(id)
     res.json(Response().successMessage(res.statusCode, 'SUCCESS', employee))
   }
   const updateEmployee = (req, res) => {
