@@ -8,10 +8,10 @@ const employeeService = (employeeRepository) => {
         return list()
     }
     const findAllEmployeeById = (id) => {
-        getById(id)
+        return getById(id)
     }
-    const updateEmployee = (id, itemsObj) => {
-        update(id, itemsObj)
+    const updateEmployee = (id, payload) => {
+        update(id, payload)
     }
     const removeEmployee = (id) => {
         deleteEmployee(id)

@@ -13,17 +13,7 @@ const arr = [
     }
 ]
 
-
-const teee = (id, name) => {
-    for (let i of arr) {
-        if (i.id === id) {
-            i.name = name
-            return i
-        }
-    }
-}
-
-// console.log(teee(1, 'name'))
+console.log(arr.find())
 
 const indexOfObject = arr.findIndex(object => {
     return object.id === 2
