@@ -1,7 +1,7 @@
 const AuthenticationService = (userService) => {
-    const {findByUsernamePassword} = userService
+    const {findUserByUsernamePassword} = userService
     const login = async (payload) => {
-        const user = await findByUsernamePassword(
+        const user = await findUserByUsernamePassword(
             payload.username,
             payload.password
         )

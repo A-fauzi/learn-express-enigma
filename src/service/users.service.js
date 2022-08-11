@@ -1,5 +1,5 @@
 const UsersService = (userRepository) => {
-    const {  create, list, getById, update, remove } = userRepository;
+    const {  create, list, getById, update, remove, getUserByUsernamePassword } = userRepository;
     const registerUsers = async (newUser) => {
         try {
             return await create(newUser);
@@ -35,8 +35,17 @@ const UsersService = (userRepository) => {
             return err.message
         }
     }
+
+    const findUserByUsernamePassword = async (username, password) => {
+        try {
+            return await getUserByUsernamePassword(username, password);
+        } catch (err) {
+            return err.message
+        }
+    }
+
     return {
-        registerUsers, findAllUsers, findUsersById, updateUser, removeUsers
+        registerUsers, findAllUsers, findUsersById, updateUser, removeUsers, findUserByUsernamePassword
     }
 }
 

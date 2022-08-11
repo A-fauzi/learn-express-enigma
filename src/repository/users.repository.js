@@ -1,6 +1,7 @@
 const bcrypt = require('bcryptjs')
 const dbQueryUsers = require('../config/users/db.query.users');
 const UsersDto = require('../model/users/users.dto');
+const passwordCompare = require("../utils/password.utils");
 const UsersRepository = (db) => {
     const create = async (payload) => {
         try {
@@ -74,8 +75,21 @@ const UsersRepository = (db) => {
         }
     }
 
+    const getUserByUsernamePassword = async (username, password) => {
+        try {
+            const result = await db.query(dbQueryUsers().SELECT_USERS, [username]);
+            const validPassword = await passwordCompare(password, result.rows[0].password);wi
+            if (!validPassword) {
+                return null;
+            }
+            return await getById(result.rows[0].id)
+        } catch (err) {
+            return err.message
+        }
+    }
+
     return {
-        create, list, getById, update, remove
+        create, list, getById, update, remove, getUserByUsernamePassword
     }
 }
 

@@ -10,6 +10,8 @@ const UserService = require('../../service/users.service')
 const UserRepository = require('../../repository/users.repository')
 const UserController = require('../../delivery/controller/users.controller')
 
+const AuthController = require('../../delivery/controller/authentication.controller')
+const AuthRoute = require('../../delivery/routes/auth.route')
 const AuthenticationService = require('../../service/authentication.service')
 
 const router = express.Router();
@@ -23,12 +25,12 @@ const usersService = (req, res, next) => {
     next()
 }
 const authService = (req, res, next) => {
-    req.service = AuthenticationService(UserService(UserRepository(db)))
+    req.authService = AuthenticationService(UserService(UserRepository(db)))
     next()
 }
 
 router.use('/employee', employeeService, employeeRouter(EmployeeController));
 router.use('/users', usersService, usersRouter(UserController));
-router.use('/auth', authService, usersRouter(UserController));
+router.use('/auth', authService, AuthRoute(AuthController));
 
 module.exports = router;
