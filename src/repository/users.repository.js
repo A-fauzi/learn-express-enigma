@@ -25,7 +25,7 @@ const UsersRepository = (db) => {
                 for (let i = 0; i < result.rows.length; i++) {
                     users.push(UsersDto(result, i));
                 }
-                return users;
+                return users
             }
             const result = await db.query(dbQueryUsers().SELECT_USERS_LIST);
             for (let i = 0; i < result.rows.length; i++) {
@@ -51,10 +51,10 @@ const UsersRepository = (db) => {
             const idx = await getById(payload.id);
             if (!idx) return `User with value ID ${payload.id} not found!`;
             const result = await db.query(
-                dbQueryUsers().UPDATE_BIODATA,  [
-                    payload.firstname,
+                dbQueryUsers().UPDATE_USERS,  [
+                    payload.username,
                     payload.email,
-                    payload.password,
+                    bcrypt.hashSync(payload.password, 8),
                     payload.id
                 ]);
             return UsersDto(result);

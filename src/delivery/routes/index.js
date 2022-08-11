@@ -11,6 +11,7 @@ const UserController = require('../../delivery/controller/users.controller')
 
 const db = require("../../config/db");
 const router = express.Router();
+
 const employeeService = (req, res, next) => {
     req.service = EmployeeService(EmployeeRepository(db));
     next()

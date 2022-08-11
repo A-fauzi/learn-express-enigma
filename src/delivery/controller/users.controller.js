@@ -13,7 +13,7 @@ const UsersController = () => {
 
     const listUsers = async (req, res) => {
         try {
-            const keyword = req.query.q
+            const keyword = req.query.user
             const users = await req.serviceUsers.findAllUsers(keyword);
             res.json(Response().successMessage(res.statusCode, 'SUCCESS', users));
         } catch (err) {
