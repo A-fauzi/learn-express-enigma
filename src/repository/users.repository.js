@@ -78,13 +78,15 @@ const UsersRepository = (db) => {
     const getUserByUsernamePassword = async (username, password) => {
         try {
             const result = await db.query(dbQueryUsers().SELECT_USERS, [username]);
-            const validPassword = await passwordCompare(password, result.rows[0].password);wi
-            if (!validPassword) {
+            const validUser = result.rows[0].username === username
+            const validPassword = await passwordCompare(password, result.rows[0].password);
+            console.log(validUser)
+            if (!validPassword || !validUser) {
                 return null;
             }
             return await getById(result.rows[0].id)
         } catch (err) {
-            return err.message
+            throw err.message
         }
     }
 
