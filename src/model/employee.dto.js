@@ -1,4 +1,4 @@
-const Employee = require('../model/employee')
+const Employee = require('./employee')
 module.exports = EmployeeDto = (result, index = 0) => {
     return Employee(
         result.rows[index].id,

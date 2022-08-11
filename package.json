@@ -2,11 +2,11 @@
   "name": "enigma-express",
   "version": "1.0.0",
   "description": "Belajar Express Framework",
-  "main": "index.js",
+  "main": "src/delivery/routes/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "TZ='UTC+7' node index.js",
-    "start:dev": "nodemon index.js"
+    "start": "TZ='UTC+7' node src/delivery/routes/index.js",
+    "start:dev": "nodemon src/delivery/routes/index.js"
   },
   "author": "afauzi",
   "license": "ISC",

@@ -1,20 +1,18 @@
-const express = require('express')
-const EmployeeRoute = require("./route/employeeRoute");
-require('dotenv').config()
-
+const express = require('express');
+const config = require('../config/config');
+const errorRoute = require('./routes/error.route');
+const jsonMiddleware = require('./middleware/json.middleware');
+const appRoute = require('./routes');
+require('dotenv').config();
+const { port, host } = config();
 const Server = () => {
-    const app = express()
-    app.use(express.json())
-
-    const run = () => {
-        EmployeeRoute(app)
-    }
-
-    app.listen(process.env.APP_PORT, () => {
-        console.log(`app is running on http://localhost:${process.env.APP_PORT}`)
+    const app = express();
+    app.use(jsonMiddleware);
+    app.use(appRoute);
+    app.use(errorRoute);
+    app.listen(port, host, () => {
+        console.info(`App server running on port ${port}`);
     })
-    return {
-        run
-    }
 }
-module.exports = Server
+
+module.exports = Server;
